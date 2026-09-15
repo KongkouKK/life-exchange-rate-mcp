@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "slug": "kongkoukk-life-exchange-rate",
+  "sourceRepository": "https://github.com/KongkouKK/life-exchange-rate-mcp",
+  "reviewCommit": "TO_BE_FILLED_AFTER_DEPLOY",
+  "apiBaseUrl": "TO_BE_FILLED_AFTER_DEPLOY",
+  "deploymentProofUrl": "TO_BE_FILLED_AFTER_DEPLOY/.well-known/xagent-verification.json",
+  "name": "Life Exchange Rate MCP",
+  "healthCheckUrl": "TO_BE_FILLED_AFTER_DEPLOY/health"
+}
