@@ -16,7 +16,7 @@ uv run --frozen uvicorn life_exchange_rate.main:app --app-dir source --host 127.
 
 Open [API docs](http://localhost:8000/docs), [health](http://localhost:8000/health), or [demo radar](http://localhost:8000/v1/radar/demo). The canonical MCP endpoint is **http://localhost:8000/mcp/**, including the trailing slash. It is a protocol endpoint, not a web page.
 
-For configuration, copy `.env.example` to `.env` and add `--env-file .env` to the Uvicorn command. Environment files are not loaded automatically. Never commit API keys. Set `PUBLIC_BASE_URL` to the actual public origin when deploying; the MCP host allowlist derives from it. Both `/health` and `/.well-known/xagent-verification.json` read the same `REVIEW_COMMIT` and package version. `dev-local` is a development placeholder, not a review commit.
+For local configuration, copy `.env.example` to `.env` and add `--env-file .env` to the Uvicorn command. Environment files are not loaded automatically. Never commit API keys. Vercel Git deployments use the platform's actual `VERCEL_GIT_COMMIT_SHA` and production domain automatically. Self-hosted deployments can set `PUBLIC_BASE_URL` and `REVIEW_COMMIT` explicitly. The MCP host allowlist uses the resolved public origin; `/health` and `/.well-known/xagent-verification.json` report the same source revision. `dev-local` is a development placeholder. See [free deployment instructions](docs/DEPLOY_FREE.md).
 
 ## End-to-end demo
 
@@ -51,4 +51,4 @@ Tests use deterministic HTTP fixtures and exercise real MCP tool serialization. 
 
 ## Submission status
 
-The original folder has no Git repository or deployment information. `submission.json` therefore retains explicit deployment/repository placeholders. Set the real repository URL, public deployment origin and exact reviewed commit before submission; no commit or deployment has been invented.
+Source is published at [KongkouKK/life-exchange-rate-mcp](https://github.com/KongkouKK/life-exchange-rate-mcp). The prepared application passed 148 local tests. Public deployment and hosted verification remain pending; `submission.json` retains explicit placeholders for the hosted origin and reviewed revision. `RIGHTS.md` is a draft requiring the submitter's final declarations. No contest pull request has been submitted.
