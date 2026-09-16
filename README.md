@@ -4,6 +4,17 @@
 
 Translate structured macroeconomic events into travel purchasing power, mortgage/savings and fuel scenarios, work time, and user-defined everyday units. Headlines trigger attention; **only structured numeric observations drive calculations**. Wages, budgets, prices and pass-through assumptions come from explicit inputs or clearly labeled demonstration defaults.
 
+## Public demo
+
+The application is deployed on Vercel Hobby for a personal, noncommercial demonstration:
+
+- [Interactive API documentation](https://life-exchange-rate-mcp.vercel.app/docs)
+- [Health and deployed source revision](https://life-exchange-rate-mcp.vercel.app/health)
+- [Deployment verification proof](https://life-exchange-rate-mcp.vercel.app/.well-known/xagent-verification.json)
+- MCP endpoint: **https://life-exchange-rate-mcp.vercel.app/mcp/**, including the trailing slash. Connect with an MCP client; this is not a web page.
+
+On 2026-09-16, hosted health, deployment proof, and complete MCP checks passed in current and legacy protocol modes. Each mode called all nine tools successfully (12 positive calls) and rejected seven invalid inputs. The run fetched live ECB/Frankfurter FX observations and Fed RSS; policy-rate and energy calls used explicitly synthetic fixtures. The [saved hosted evidence](verification/hosted-live-2026-09-16.json) records that deployment's revision, while the deployment proof reports the current revision. See [deployment status](DEPLOYMENT_STATUS.md) and the [verification runbook](verification/README.md).
+
 ## Run locally
 
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/getting-started/installation/).
@@ -33,6 +44,8 @@ The smoke script starts and stops a local server automatically. Without `--live-
 
 In the fixed synthetic scenario, 20,000 SEK bought 300,000 JPY at 15 JPY/SEK and buys 276,000 JPY at 13.8. Restoring the original purchasing power needs **1,739.13 SEK**, equivalent to **8.70 work hours**, **38.65 coffees**, or **12.42 lunches** at the declared demonstration income and prices. These alternatives are equivalents of the same amount, not additional expenses. They are not current market data or the user's finances.
 
+The hosted live capture on **2026-09-16** retrieved ECB/Frankfurter rates of **16.0689 → 15.8648 JPY/SEK** for **September 8 → 15**. For a synthetic person with a 20,000 SEK travel budget, restoring the earlier JPY purchasing power required **257.30 SEK**, equivalent to **1.29 work hours**, **5.72 coffees**, or **1.84 lunches** using explicit inputs of 32,000 SEK monthly income, 160 work hours, 45 SEK per coffee, and 140 SEK per lunch. These profile values are demonstration inputs, not the user's finances or observed retail prices; the reference-rate comparison excludes exchange fees and spreads. A Fed headline was fetched separately to test the headline interface, with no claim that it caused the FX move. [Capture and calculation trace](verification/hosted-live-2026-09-16.json).
+
 ## Data and guarantees
 
 - Live FX uses Frankfurter's dedicated ECB route, correct calendar lookback selection and a rolling log-return anomaly score. Every score reports its horizon, reference sample count, mean, sample volatility and fallback reason. See `docs/FX_ANOMALY.md`.
@@ -51,4 +64,6 @@ Tests use deterministic HTTP fixtures and exercise real MCP tool serialization. 
 
 ## Submission status
 
-Source is published at [KongkouKK/life-exchange-rate-mcp](https://github.com/KongkouKK/life-exchange-rate-mcp). The prepared application passed 148 local tests. Public deployment and hosted verification remain pending; `submission.json` retains explicit placeholders for the hosted origin and reviewed revision. `RIGHTS.md` is a draft requiring the submitter's final declarations. No contest pull request has been submitted.
+Source is published at [KongkouKK/life-exchange-rate-mcp](https://github.com/KongkouKK/life-exchange-rate-mcp). The application passed 148 local tests and the hosted checks described above. Deployment is on the free Vercel Hobby plan, within its personal/noncommercial terms and usage quotas. No EIA key is configured: energy demonstration results use the explicitly labeled synthetic scenario fallback, and no live EIA verification is claimed.
+
+Contest submission remains separate from deployment. `submission.json` and `SUBMISSION.md` still require final submission review; `RIGHTS.md` is a draft requiring the submitter's declarations. No official contest pull request has been submitted.
